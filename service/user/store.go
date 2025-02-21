@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-
 	"github.com/huuloc2026/restfulapi-gorm.git/types"
 )
 
@@ -35,11 +34,11 @@ func (s *Store) GetUserByEmail(email string) (*types.User, error) {
 			fmt.Println("Error scanning row:", err) // ✅ Log lỗi khi scan dữ liệu
 			return nil, err
 		}
-		fmt.Printf("User found: %+v\n", user) // ✅ Log user tìm thấy
+		// fmt.Printf("User found: %+v\n", user) // ✅ Log user tìm thấy
 		return user, nil
 	}
 
-	fmt.Println("User not found") // ✅ Log nếu không tìm thấy user
+	//fmt.Println("User not found") // ✅ Log nếu không tìm thấy user
 	return nil, fmt.Errorf("user not found")
 }
 
