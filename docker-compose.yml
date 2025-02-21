@@ -1,14 +1,14 @@
 services:
   postgres:
     image: postgres:16
-    container_name: postgret-golang
+    container_name: postgres-golang
     restart: always
     ports:
       - "5437:5432"
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=huuloc2026
-      - POSTGRES_DB=8663-microservices
+      - POSTGRES_DB=HuuLocdb
     volumes:
       - social_postgres:/var/lib/postgresql/data
     networks:
