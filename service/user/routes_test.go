@@ -4,12 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
+	"github.com/huuloc2026/restfulapi-gorm.git/types"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/gorilla/mux"
-	"github.com/huuloc2026/restfulapi-gorm.git/types"
 )
 
 func TestUserServiceHandlers(t *testing.T) {
