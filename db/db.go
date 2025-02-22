@@ -30,7 +30,19 @@ func InitDB() (*sql.DB, error) {
         role VARCHAR(50) DEFAULT 'user',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );`
+    );
+
+	CREATE TABLE IF NOT EXISTS products (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        description VARCHAR(255) NOT NULL UNIQUE,
+        categories VARCHAR(255) DEFAULT 'electronic',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+	
+	
+	`
 
 	_, err = db.Exec(createTableQuery)
 	if err != nil {
