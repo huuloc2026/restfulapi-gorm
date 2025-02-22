@@ -15,10 +15,9 @@ func InitDB() (*sql.DB, error) {
 	// dbPassword := config.Envs.DB_PASSWORD
 	// dbPort := config.Envs.DB_PORT
 	// dbName := config.Envs.DB_NAME
-	dbUrl := config.Envs.DB_URL
-
 	// dsn := fmt.Sprintf("postgresql://%s:%s@localhost:%s/%s?sslmode=disable",
 	// dbUser, dbPassword, dbPort, dbName,)
+	dbUrl := config.Envs.DB_URL
 
 	db, err := sql.Open("postgres", dbUrl)
 	createTableQuery := `
@@ -50,8 +49,10 @@ func InitDB() (*sql.DB, error) {
 	}
 
 	fmt.Println("Database initialized successfully.")
-	if err != nil {
-		log.Fatal(err)
-	}
+	defer func() {
+		if err := db.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 	return db, nil
 }

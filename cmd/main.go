@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	// inject Postgres config
 	database, err := db.InitDB()
 	if err != nil {
 		log.Fatal(err)
@@ -23,6 +24,7 @@ func main() {
 	fmt.Println("OKe")
 }
 
+// init Storage
 func initStorage(db *sql.DB) {
 	err := db.Ping()
 	if err != nil {
